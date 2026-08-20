@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--Phần 1: form cho trường -->
+<form method="get" action="simple_form.html">
+</form>
+<h1 style="color: darkred;">SỞ THÍCH CỦA BẠN</h1>
+<span>Họ và tên: </span> <input type="text" name="your name" placeholder="your full name"> <br>
+<span>Email: </span> <input type="text" name="your email" placeholder="your email address"> <br> <br>
+<div style="color: blue; margin-bottom: 10px;"> Sở thích</div>
+<input type="checkbox" id="thể thao"> <label for="thể thao" class="option-label">thể thao</label>
+<input type="checkbox" id="đọc sách"> <label for="đọc sách" class="option-label">đọc sách</label>
+<input type="checkbox" id="lướt web"> <label for="lướt web" class="option-label">lướt web</label> <br>
+<input type="checkbox" id="du lịch"> <label for="du lịch" class="option-label">du lịch</label>
+<input type="checkbox" id="game"> <label for="game" class="option-label">game</label>
+<input type="checkbox" id="ngủ"> <label for="ngủ" class="option-label">ngủ</label><br>
+
+<button type="submit">Gửi thông tin</button>
+<button type="reset">Reset</button>
+
+
+<hr>
+
+<!-- phần 2: đăng ký học viên -->
+
+<form method="get" action="simple_form.html">
+</form>
+<h1 style="color: blue;">ĐĂNG KÝ HỌC VIÊN</h1>
+<span>Họ và tên: </span> <input type="text" name="your name" placeholder="đầy đủ họ tên"> <br>
+<span>Ngày sinh: </span> <input type="text" name="your birth" placeholder="ngày sinh"> <br>
+<p> Giới tính</p>
+<input type="radio" name="gender" value="male"/>nam
+<input type="radio" name="gender" value="female"/>nữ
+
+<p>Địa chỉ</p>
+<textarea name="Địa chỉ" rows="5" cols="30"></textarea>
+<p>Lớp</p>
+<select>
+    <option value=" ">--Chọn lớp-- </option>
+    <option>Trí tuệ nhân tạo</option>
+    <option>Quản trị kinh doanh</option>
+    <option>Vi mạch bán dẫn</option>
+    <option>Công nghệ ô tô</option>
+</select><br><br>
+
+<span>Email: </span><input type="text" name="your email" placeholder="địa chỉ email"> <br> <br>
+<span>Số điện thoại: </span><input type="text" name="phone number" placeholder="Số điện thoại"> <br> <br>
+<button type="submit">Đăng ký</button>
+<button type="reset">Reset</button>
+</body>
+</html>
