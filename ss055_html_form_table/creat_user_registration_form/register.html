@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form đăng ký người dùng</title>
+</head>
+<body>
+<form action="http://localhost:8080/ss055_registration_form/register" method="post">
+    <label for="name">Họ và tên:</label>
+    <br>
+    <input type="text" id="name" name="name" required>
+    <br><br>
+
+    <label for="email">Email:</label>
+    <br>
+    <input type="text" id="email" name="email" required>
+    <br><br>
+
+    <label for="phone">Số điện thoại:</label>
+    <br>
+    <input type="text" id="phone" name="phone" required>
+    <br><br>
+
+    <label>Giới tính</label>
+    <label for="male">
+        <input type="radio" id="male" name="gender" value="nam" checked> Nam
+    </label>
+    <label for="female">
+        <input type="radio" id="female" name="gender" value="nu" checked> Nữ
+    </label>
+    <br><br>
+
+    <button type="submit">Đăng ký</button>
+</form>
+</body>
+</html>
