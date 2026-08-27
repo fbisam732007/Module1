@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+<body>
+<script>
+    let chieuDai = parseFloat(prompt('Nhập chiều dài:'));
+    let chieuRong = parseFloat(prompt('Nhập chiều rộng:'));
+    let dienTich = chieuDai * chieuRong;
+
+    document.write(`
+        <h2>Kết quả tính diện tích hình chữ nhật</h2>
+        <p>Chiều dài: <b>${chieuDai}</b></p>
+        <p>Chiều rộng: <b>${chieuRong}</b></p>
+        <p>Diện tích: <b style="color: red; font-size: 24px;">${dienTich}</b></p>
+    `);
+</script>
+</body>
+</html>
