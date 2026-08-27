@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính điểm trung bình</title>
+</head>
+<body>
+
+<script>
+    function nhapDiem(monHoc) {
+        let diem = Number(prompt("Nhập điểm " + monHoc + " của bạn:"));
+        while (diem < 1 || diem > 10 || isNaN(diem)) {
+            alert("Điểm phải là số từ 1 đến 10!");
+            diem = Number(prompt("Nhập lại điểm " + monHoc + ":"));
+        }
+        return diem;
+    }
+
+    let diemToan = nhapDiem("Toán");
+    let diemLy = nhapDiem("Lý");
+    let diemHoa = nhapDiem("Hóa");
+
+    let diemTrungBinh = (diemToan + diemLy + diemHoa) / 3;
+    diemTrungBinh = diemTrungBinh.toFixed(2);
+
+    document.write(`<h2>Kết quả học tập</h2>`);
+    document.write(`Điểm Toán: <b>${diemToan}</b><br>`);
+    document.write(`Điểm Lý: <b>${diemLy}</b><br>`);
+    document.write(`Điểm Hóa: <b>${diemHoa}</b><br>`);
+    document.write(`<h3 style="color: red;">Điểm trung bình: ${diemTrungBinh}</h3>`);
+</script>
+
+</body>
+</html>
