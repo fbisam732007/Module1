@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 6 - Máy tính (4 hàm)</title>
+</head>
+<body>
+
+<h2> Ứng dụng máy tính</h2>
+
+<div class="input-group">
+    <div>
+        <label>Số thứ nhất</label><br>
+        <input type="number" id="num1" step="any" value="12">
+    </div>
+    <div>
+        <label>Số thứ hai</label><br>
+        <input type="number" id="num2" step="any" value="12">
+    </div>
+</div>
+
+<div class="btn-group">
+    <button class="btn-add" onclick="add()">Addition(+)</button>
+    <button class="btn-sub" onclick="subtract()"> Subtraction(-)</button>
+    <button class="btn-mul" onclick="multiply()">Multiplication(X)</button>
+    <button class="btn-div" onclick="divide()"> Division(/)</button>
+</div>
+
+<hr>
+
+<div class="result-box" id="result">
+    💡 Nhập số và chọn phép tính
+</div>
+
+<script>
+    function getValues() {
+        let num1 = parseFloat(document.getElementById("num1").value);
+        let num2 = parseFloat(document.getElementById("num2").value);
+        return { num1, num2 };
+    }
+
+    function showResult(operation, symbol, result) {
+        let num1 = document.getElementById("num1").value;
+        let num2 = document.getElementById("num2").value;
+        document.getElementById("result").innerHTML =
+            `<h3>Result ${operation}:</h3>` +
+            `${num1} ${symbol} ${num2} = <span class="big">${result}</span>`;
+    }
+
+
+    function add() {
+        let { num1, num2 } = getValues();
+        if (isNaN(num1) || isNaN(num2)) {
+            document.getElementById("result").innerHTML =
+                '<span class="error">Vui lòng nhập số hợp lệ!</span>';
+            return;
+        }
+        let result = num1 + num2;
+        let resultStr = Number.isInteger(result) ? result : result.toFixed(2);
+        showResult("Addition", "+", resultStr);
+    }
+
+    function subtract() {
+        let { num1, num2 } = getValues();
+        if (isNaN(num1) || isNaN(num2)) {
+            document.getElementById("result").innerHTML =
+                ' <span class="error">Vui lòng nhập số hợp lệ!</span>';
+            return;
+        }
+        let result = num1 - num2;
+        let resultStr = Number.isInteger(result) ? result : result.toFixed(2);
+        showResult("Subtraction", "−", resultStr);
+    }
+
+    function multiply() {
+        let { num1, num2 } = getValues();
+        if (isNaN(num1) || isNaN(num2)) {
+            document.getElementById("result").innerHTML =
+                ' <span class="error">Vui lòng nhập số hợp lệ!</span>';
+            return;
+        }
+        let result = num1 * num2;
+        let resultStr = Number.isInteger(result) ? result : result.toFixed(2);
+        showResult("Multiplication", "×", resultStr);
+    }
+
+    function divide() {
+        let { num1, num2 } = getValues();
+        if (isNaN(num1) || isNaN(num2)) {
+            document.getElementById("result").innerHTML =
+                '<span class="error">Vui lòng nhập số hợp lệ!</span>';
+            return;
+        }
+        if (num2 === 0) {
+            document.getElementById("result").innerHTML =
+                '<span class="error">Không thể chia cho 0!</span>';
+            return;
+        }
+        let result = num1 / num2;
+        let resultStr = Number.isInteger(result) ? result : result.toFixed(2);
+        showResult("Division", "÷", resultStr);
+    }
+</script>
+
+</body>
+</html>
