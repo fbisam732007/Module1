@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bài 2: chuyển đổi nhiệt độ</title>
+</head>
+<body>
+<h2>BÀI 2: Chuyển đổi độ C sang độ F</h2>
+<p>Nhập nhiệt độ theo độ C (°C)</p>
+
+<label>Nhập độ C: <input type="number" id="nhietDoC" step="0.1"></label>
+<br><br>
+
+<button onclick="chuyenDoiNhietDo()">Chuyển đổi</button>
+
+<hr>
+
+<div id="ketQuaBai2"></div>
+
+<script>
+    function chuyenDoiNhietDo() {
+        let doC = parseFloat(document.getElementById("nhietDoC").value);
+
+        if (isNaN(doC)) {
+            document.getElementById("ketQuaBai2").innerHTML =
+                "⚠️ Vui lòng nhập nhiệt độ hợp lệ!";
+            return;
+        }
+
+        let doF = (doC * 9 / 5) + 32;
+
+        doF = doF.toFixed(2);
+
+        document.getElementById("ketQuaBai2").innerHTML =
+            "<h3>Kết quả chuyển đổi:</h3>" +
+            doC + "°C = <b>" + doF + "°F</b>";
+    }
+</script>
+</body>
+</html>

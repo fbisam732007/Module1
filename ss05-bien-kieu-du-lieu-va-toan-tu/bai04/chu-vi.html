@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 4 - Tính chu vi hình tròn</title>
+</head>
+<body>
+
+<h2>BÀI 4: Tính chu vi hình tròn</h2>
+<p>Nhập bán kính hình tròn (r)</p>
+
+<label>Nhập bán kính r: <input type="number" id="banKinhBai4" step="0.01"></label>
+<br><br>
+
+<button onclick="tinhChuViHinhTron()">Tính chu vi</button>
+
+<hr>
+
+<div id="ketQuaBai4"></div>
+
+<script>
+    function tinhChuViHinhTron() {
+        let r = parseFloat(document.getElementById("banKinhBai4").value);
+
+        if (isNaN(r)) {
+            document.getElementById("ketQuaBai4").innerHTML =
+                "⚠️ Vui lòng nhập bán kính hợp lệ!";
+            return;
+        }
+
+        if (r <= 0) {
+            document.getElementById("ketQuaBai4").innerHTML =
+                "⚠️ Bán kính phải lớn hơn 0!";
+            return;
+        }
+
+        let chuVi = 2 * Math.PI * r;
+
+        chuVi = chuVi.toFixed(2);
+
+        document.getElementById("ketQuaBai4").innerHTML =
+            "<h3> Kết quả:</h3>" +
+            "Bán kính: <b>" + r + "</b><br>" +
+            "Chu vi hình tròn: <b>" + chuVi + "</b>";
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 3 - Tính diện tích hình tròn</title>
+</head>
+<body>
+
+<h2>BÀI 3: Tính diện tích hình tròn</h2>
+<p>Nhập bán kính hình tròn (r)</p>
+
+<label>Nhập bán kính r: <input type="number" id="banKinh" step="0.01"></label>
+<br><br>
+
+<button onclick="tinhDienTichHinhTron()">Tính diện tích</button>
+
+<hr>
+
+<div id="ketQuaBai3"></div>
+
+<script>
+    function tinhDienTichHinhTron() {
+        let r = parseFloat(document.getElementById("banKinh").value);
+
+        if (isNaN(r)) {
+            document.getElementById("ketQuaBai3").innerHTML =
+                "⚠️ Vui lòng nhập bán kính hợp lệ!";
+            return;
+        }
+        if (r <= 0) {
+            document.getElementById("ketQuaBai3").innerHTML =
+                "Bán kính phải lớn hơn 0!";
+            return;
+        }
+        let dienTich = Math.PI * r * r;
+
+        dienTich = dienTich.toFixed(2);
+
+        document.getElementById("ketQuaBai3").innerHTML =
+            "<h3>Kết quả:</h3>" +
+            "Bán kính: <b>" + r + "</b><br>" +
+            "Diện tích hình tròn: <b>" + dienTich + "</b>";
+    }
+</script>
+
+</body>
+</html>
