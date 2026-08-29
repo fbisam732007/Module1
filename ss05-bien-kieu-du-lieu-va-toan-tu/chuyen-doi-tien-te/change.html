@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 5 - Chuyển đổi tiền tệ</title>
+</head>
+<body>
+
+<h2> Ứng dụng chuyển đổi tiền tệ</h2>
+
+<form id="currencyForm">
+    <label>Amount: <input type="number" id="amount" step="0.01" value="1"></label>
+    <br><br>
+
+    <label>From Currency:
+        <select id="fromCurrency">
+            <option value="VND">Việt Nam Đồng (VND)</option>
+            <option value="USD">Đô la Mỹ (USD)</option>
+            <option value="EUR">Euro (EUR)</option>
+            <option value="JPY">Yên Nhật (JPY)</option>
+            <option value="GBP">Bảng Anh (GBP)</option>
+        </select>
+    </label>
+    <br><br>
+
+    <label>To Currency:
+        <select id="toCurrency">
+            <option value="USD">Đô la Mỹ (USD)</option>
+            <option value="VND">Việt Nam Đồng (VND)</option>
+            <option value="EUR">Euro (EUR)</option>
+            <option value="JPY">Yên Nhật (JPY)</option>
+            <option value="GBP">Bảng Anh (GBP)</option>
+        </select>
+    </label>
+    <br><br>
+
+    <button type="button" onclick="convertCurrency()"> Convert</button>
+</form>
+
+<hr>
+
+<div id="result"></div>
+
+<script>
+    const exchangeRates = {
+        USD: 1,
+        VND: 25500,
+        EUR: 0.92,
+        JPY: 149.50,
+        GBP: 0.79
+    };
+
+    function convertCurrency() {
+        let amount = parseFloat(document.getElementById("amount").value);
+        let fromCurrency = document.getElementById("fromCurrency").value;
+        let toCurrency = document.getElementById("toCurrency").value;
+
+        if (isNaN(amount) || amount <= 0) {
+            document.getElementById("result").innerHTML =
+                "⚠️ Vui lòng nhập số tiền hợp lệ (lớn hơn 0)!";
+            return;
+        }
+
+        if (fromCurrency === toCurrency) {
+            document.getElementById("result").innerHTML =
+                "⚠️ Vui lòng chọn 2 loại tiền khác nhau!";
+            return;
+        }
+
+        let amountInUSD = amount / exchangeRates[fromCurrency];
+
+        let result = amountInUSD * exchangeRates[toCurrency];
+
+        result = result.toFixed(2);
+
+        let fromName = document.getElementById("fromCurrency").selectedOptions[0].text;
+        let toName = document.getElementById("toCurrency").selectedOptions[0].text;
+
+        document.getElementById("result").innerHTML =
+            "<h3> Kết quả chuyển đổi:</h3>" +
+            "<b>" + amount + " " + fromName + "</b><br>" +
+            " = <b style='color: green; font-size: 20px;'>" + result + " " + toName + "</b>";
+    }
+</script>
+
+</body>
+</html>
