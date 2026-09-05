@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chỉ số cân nặng</title>
+</head>
+<body>
+<input type="number" id="weightInput" placeholder="nhập số cân nặng " />
+<button onclick="phanLoaiCanNang()" >Tính số cân nặng</button>
+<p id="result" style="font-weight: bold; color: red"></p>
+<script>
+    function phanLoaiCanNang() {
+        let weight = document.getElementById('weightInput').value;
+        let weightNumber = Number(weight);
+
+        if (weightNumber <= 0) {
+            document.getElementById('result').innerHTML = "error";
+            return;
+        }
+        let result;
+        if (weightNumber < 18) {
+            result = "Underweight";
+        } else if (weightNumber < 25.0) {
+            result = "Normal";
+        } else if (weightNumber < 30.0) {
+            result = "Overweight";
+        } else {
+            result = "Obese";
+        }
+        document.getElementById('result').innerHTML = "BMI = " + weightNumber + " - " + result;
+    }
+</script>
+
+</body>
+</html>
