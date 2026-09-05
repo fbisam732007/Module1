@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>switch-case</title>
+</head>
+<body>
+Number:
+<input type="number" id="monthInput" placeholder="nhập số"/>
+<button onclick="tinhSoNgay()">Tính số ngày</button> <br>
+<p id="result" style="font-weight: bold; color: red"></p>
+<script>
+    function tinhSoNgay() {
+        let month = document.getElementById('monthInput').value;
+        let monthNumber = Number(month);
+
+        let days;
+        switch (monthNumber) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                days = 31;
+                break;
+
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                days = 30;
+                break;
+
+            case 2:
+                days = "28 hoặc 29 (năm nhuận)";
+                break;
+
+            default:
+                days = "Tháng không hợp lệ (1-12) ";
+                break;
+        }
+        document.getElementById('result').innerHTML = "Tháng" + monthNumber + " có " + days + " ngày ";
+    }
+</script>
+
+</body>
+</html>
