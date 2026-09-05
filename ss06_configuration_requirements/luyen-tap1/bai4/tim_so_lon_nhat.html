@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 4: Tìm số lớn nhất trong 3 số</title>
+</head>
+<body>
+
+<h2>Tìm giá trị lớn nhất của 3 số nguyên</h2>
+
+<label>Nhập số thứ nhất: </label>
+<input type="number" id="so1" placeholder="Nhập số nguyên">
+<br><br>
+
+<label>Nhập số thứ hai: </label>
+<input type="number" id="so2" placeholder="Nhập số nguyên">
+<br><br>
+
+<label>Nhập số thứ ba: </label>
+<input type="number" id="so3" placeholder="Nhập số nguyên">
+<br><br>
+
+<button onclick="timSoLonNhat()">Tìm số lớn nhất</button>
+
+<p id="result" style="font-weight: bold; margin-top: 10px;"></p>
+
+<script>
+    function timSoLonNhat() {
+        let a = document.getElementById('so1').value;
+        let b = document.getElementById('so2').value;
+        let c = document.getElementById('so3').value;
+
+        let so1 = Number(a);
+        let so2 = Number(b);
+        let so3 = Number(c);
+
+        if (isNaN(so1) || isNaN(so2) || isNaN(so3) || a === "" || b === "" || c === "") {
+            document.getElementById('result').innerHTML = "Vui lòng nhập đủ 3 số nguyên hợp lệ";
+            return;
+        }
+
+        if (!Number.isInteger(so1) || !Number.isInteger(so2) || !Number.isInteger(so3)) {
+            document.getElementById('result').innerHTML = "Vui lòng nhập số nguyên (không có phần thập phân)";
+            return;
+        }
+
+        let max;
+        if (so1 >= so2 && so1 >= so3) {
+            max = so1;
+        } else if (so2 >= so1 && so2 >= so3) {
+            max = so2;
+        } else {
+            max = so3;
+        }
+
+        document.getElementById('result').innerHTML =
+            "Số lớn nhất trong 3 số " + so1 + ", " + so2 + ", " + so3 + " là: " + max;
+    }
+</script>
+
+</body>
+</html>
