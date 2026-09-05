@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 2: Chuyển đổi mét sang feet</title>
+</head>
+<body>
+<h1>bảng chuyển đổi</h1>
+<label>Nhập chuyển đổi</label>
+<input type="number" id="soMet" placeholder="ghi số cần chuyển đổi">
+<button onclick="chuyenDoi()">mét sang feet</button>
+<p id="result"></p>
+
+<script>
+    function chuyenDoi() {
+        let m = document.getElementById("soMet").value;
+        let soMet = Number(m);
+
+        if (isNaN(soMet) || m === "") {
+            document.getElementById("result").innerHTML = "vui lòng nhập chiều dài phù hơp";
+            return;
+        }
+        if (soMet < 0) {
+            document.getElementById("result").innerHTML= "hãy nhập chiều dài >= 0";
+            return;
+        }
+        let feet = soMet * 3.2808;
+        document.getElementById("result").innerHTML = soMet + "mét = " + feet.toFixed(4) + "feet";
+    }
+</script>
+</body>
+</html>
