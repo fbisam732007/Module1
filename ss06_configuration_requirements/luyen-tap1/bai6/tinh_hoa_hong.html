@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 6: Tính hoa hồng</title>
+</head>
+<body>
+
+<h2>Tính hoa hồng nhận được theo doanh số</h2>
+
+<label>Nhập doanh số bán hàng (triệu đồng): </label>
+<input type="number" id="doanhSo" placeholder="Nhập doanh số" step="0.1">
+<br><br>
+
+<button onclick="tinhHoaHong()">Tính hoa hồng</button>
+
+<p id="result" style="font-weight: bold; margin-top: 10px;"></p>
+
+<script>
+    function tinhHoaHong() {
+        let ds = document.getElementById('doanhSo').value;
+        let doanhSo = Number(ds);
+
+        if (isNaN(doanhSo) || ds === "") {
+            document.getElementById('result').innerHTML = "Vui lòng nhập doanh số hợp lệ";
+            return;
+        }
+
+        if (doanhSo < 0) {
+            document.getElementById('result').innerHTML = "Vui lòng nhập doanh số lớn hơn hoặc bằng 0";
+            return;
+        }
+
+        let hoaHong;
+        let phanTram;
+
+        if (doanhSo <= 10) {
+            hoaHong = 0;
+            phanTram = "0%";
+        } else if (doanhSo <= 20) {
+            hoaHong = doanhSo * 10 / 100;
+            phanTram = "10%";
+        } else if (doanhSo <= 50) {
+            hoaHong = doanhSo * 15 / 100;
+            phanTram = "15%";
+        } else {
+            hoaHong = doanhSo * 20 / 100;
+            phanTram = "20%";
+        }
+
+        document.getElementById('result').innerHTML =
+            "Doanh số: " + doanhSo.toFixed(2) + " triệu đồng<br>" +
+            "Tỷ lệ hoa hồng: " + phanTram + "<br>" +
+            "Hoa hồng nhận được: " + hoaHong.toFixed(2) + " triệu đồng";
+    }
+</script>
+
+</body>
+</html>
