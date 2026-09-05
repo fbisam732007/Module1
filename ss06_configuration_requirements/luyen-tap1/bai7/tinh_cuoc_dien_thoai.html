@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 7: Tính cước phí điện thoại</title>
+</head>
+<body>
+
+<h2>Tính cước phí điện thoại hàng tháng</h2>
+
+<label>Số phút gọi: </label>
+<input type="number" id="soPhut" placeholder="Nhập số phút" step="0.1">
+<br><br>
+
+<label>Loại cuộc gọi: </label>
+<select id="loaiCuocGoi">
+    <option value="1">Nội mạng - 1000 VNĐ/phút</option>
+    <option value="2">Ngoại mạng - 1200 VNĐ/phút</option>
+    <option value="3">Quốc tế - 2000 VNĐ/phút</option>
+</select>
+<br><br>
+
+<label>Loại thuê bao: </label>
+<select id="loaiThueBao">
+    <option value="1">Trả trước - Giảm 0%</option>
+    <option value="2">Trả sau - Giảm 5%</option>
+</select>
+<br><br>
+
+<label>Khung giờ gọi: </label>
+<select id="khungGio">
+    <option value="1">Giờ cao điểm - Phí thêm 1%</option>
+    <option value="2">Giờ bình thường - Không phí</option>
+    <option value="3">Giờ ưu đãi - Giảm 2%</option>
+</select>
+<br><br>
+
+<label>Phương thức thanh toán: </label>
+<select id="phuongThucTT">
+    <option value="1">Tiền mặt - Không phí</option>
+    <option value="2">Chuyển khoản - Giảm 1%</option>
+    <option value="3">Ví điện tử - Giảm 2%</option>
+</select>
+<br><br>
+
+<button onclick="tinhCuoc()">Tính cước phí</button>
+
+<p id="result" style="font-weight: bold; margin-top: 10px;"></p>
+
+<script>
+    function tinhCuoc() {
+        let sp = document.getElementById('soPhut').value;
+        let soPhut = Number(sp);
+
+        let loaiCuocGoi = Number(document.getElementById('loaiCuocGoi').value);
+        let loaiThueBao = Number(document.getElementById('loaiThueBao').value);
+        let khungGio = Number(document.getElementById('khungGio').value);
+        let phuongThucTT = Number(document.getElementById('phuongThucTT').value);
+
+        if (isNaN(soPhut) || soPhut <= 0) {
+            document.getElementById('result').innerHTML = "Vui lòng nhập số phút hợp lệ (> 0)";
+            return;
+        }
+
+        let donGia;
+        let tenCuocGoi;
+        switch (loaiCuocGoi) {
+            case 1:
+                donGia = 1000;
+                tenCuocGoi = "Nội mạng";
+                break;
+            case 2:
+                donGia = 1200;
+                tenCuocGoi = "Ngoại mạng";
+                break;
+            case 3:
+                donGia = 2000;
+                tenCuocGoi = "Quốc tế";
+                break;
+            default:
+                donGia = 0;
+                tenCuocGoi = "Không xác định";
+        }
+
+        let tienCuocGoi = soPhut * donGia;
+
+        let giamThueBao;
+        let tenThueBao;
+        switch (loaiThueBao) {
+            case 1:
+                giamThueBao = 0;
+                tenThueBao = "Trả trước";
+                break;
+            case 2:
+                giamThueBao = 5;
+                tenThueBao = "Trả sau";
+                break;
+            default:
+                giamThueBao = 0;
+                tenThueBao = "Không xác định";
+        }
+
+        let phiKhungGio;
+        let tenKhungGio;
+        switch (khungGio) {
+            case 1:
+                phiKhungGio = 1;
+                tenKhungGio = "Giờ cao điểm (+1%)";
+                break;
+            case 2:
+                phiKhungGio = 0;
+                tenKhungGio = "Giờ bình thường (0%)";
+                break;
+            case 3:
+                phiKhungGio = -2;
+                tenKhungGio = "Giờ ưu đãi (-2%)";
+                break;
+            default:
+                phiKhungGio = 0;
+                tenKhungGio = "Không xác định";
+        }
+
+        let giamPTTT;
+        let tenPTTT;
+        switch (phuongThucTT) {
+            case 1:
+                giamPTTT = 0;
+                tenPTTT = "Tiền mặt (0%)";
+                break;
+            case 2:
+                giamPTTT = 1;
+                tenPTTT = "Chuyển khoản (-1%)";
+                break;
+            case 3:
+                giamPTTT = 2;
+                tenPTTT = "Ví điện tử (-2%)";
+                break;
+            default:
+                giamPTTT = 0;
+                tenPTTT = "Không xác định";
+        }
+
+        let tongGiam = giamThueBao + (-phiKhungGio) + giamPTTT;
+        let tongTien = tienCuocGoi * (1 - tongGiam / 100);
+
+        document.getElementById('result').innerHTML =
+            "===== CHI TIẾT CƯỚC PHÍ =====<br>" +
+            "Số phút gọi: " + soPhut + " phút<br>" +
+            "Loại cuộc gọi: " + tenCuocGoi + " (" + donGia.toLocaleString() + " VNĐ/phút)<br>" +
+            "Tiền cuộc gọi: " + tienCuocGoi.toLocaleString() + " VNĐ<br><br>" +
+            "Loại thuê bao: " + tenThueBao + " (giảm " + giamThueBao + "%)<br>" +
+            "Khung giờ: " + tenKhungGio + "<br>" +
+            "Phương thức TT: " + tenPTTT + "<br><br>" +
+            "Tổng giảm: " + tongGiam + "%<br>" +
+            "TỔNG TIỀN PHẢI TRẢ: " + tongTien.toLocaleString() + " VNĐ =====";
+    }
+</script>
+
+</body>
+</html>
