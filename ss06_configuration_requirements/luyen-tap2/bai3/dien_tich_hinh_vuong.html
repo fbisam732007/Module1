@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 3: Kiểm tra số nguyên</title>
+</head>
+<body>
+<h2>tính diện tích hình vuông</h2>
+<input type="number" id="canhA" placeholder="nhập cạnh a">
+<button onclick="tinhDienTich()">Tính diện tích</button>
+<p id="result"></p>
+
+<script>
+    function tinhDienTich() {
+        let a = document.getElementById("canhA").value;
+        let canh = Number(a);
+
+        if (isNaN(canh)|| a === "") {
+            document.getElementById('result').innerHTML = "hãy nhập cạnh hợp lệ";
+            return;
+        }
+        if (canh <= 0) {
+            document.getElementById('result').innerHTML = "hãy nhập số lớn hoặc bằng 0";
+            return;
+        }
+        let dienTich = canh * canh;
+        document.getElementById('result').innerHTML = "hình vuông cạnh " + canh + " thì diện tích = " + dienTich + "<br>";
+    }
+</script>
+</body>
+</html>
