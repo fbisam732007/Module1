@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Máy tính cầm tay</title>
+</head>
+<body>
+<h2>Máy tính</h2>
+
+<input type="text" id="display" size="20" readonly>
+<br><br>
+<button onclick="so('1')">1</button>
+<button onclick="so('2')">2</button>
+<button onclick="so('3')">3</button>
+<button onclick="so('+')">+</button>
+<br><br>
+<button onclick="so('4')">4</button>
+<button onclick="so('5')">5</button>
+<button onclick="so('6')">6</button>
+<button onclick="so('-')">-</button>
+<br><br>
+<button onclick="so('7')">7</button>
+<button onclick="so('8')">8</button>
+<button onclick="so('9')">9</button>
+<button onclick="so('x')">x</button>
+<br><br>
+<button onclick="xoa()">C</button>
+<button onclick="so('0')">0</button>
+<button onclick="tinhKetQua()">=</button>
+<button onclick="so('/')">/</button>
+
+<script>
+
+    let bieuThuc = "";
+
+    function so(so) {
+        bieuThuc = bieuThuc + so;
+        document.getElementById('display').value = bieuThuc;
+    }
+
+    function nhapPhepTinh(phepTinh) {
+        bieuThuc = bieuThuc + "" + phepTinh + " ";
+        document.getElementById('display').value = bieuThuc;
+    }
+
+    function xoa() {
+        bieuThuc = "";
+        document.getElementById('display').value = "";
+    }
+
+    function tinhKetQua() {
+        try {
+            let tinhToan = bieuThuc.replace(/x/g, '*');
+            let ketQua = eval(tinhToan);
+            document.getElementById('display').value = bieuThuc + " = " + ketQua;
+            bieuThuc = ketQua.toString();
+        } catch (error) {
+            document.getElementById('display').value = "Lỗi";
+            bieuThuc = "";
+        }
+    }
+</script>
+</body>
+</html>
