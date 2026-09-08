@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Tính diện tích tam giác vuông</h3>
+
+<label>Nhập cạnh a: </label>
+<input type="number" id="canhA" placeholder="Nhập số">
+<br><br>
+
+<label>Nhập cạnh b: </label>
+<input type="number" id="canhB" placeholder="Nhập số">
+<br><br>
+
+<button onclick="tinhDienTich()">Tính diện tích</button>
+<br><br>
+
+<p id="ketQua"></p>
+
+<script>
+    function tinhDienTich() {
+        let a = parseFloat(document.getElementById("canhA").value);
+        let b = parseFloat(document.getElementById("canhB").value);
+
+        if (isNaN(a) || isNaN(b) || a <= 0 || b <= 0) {
+            document.getElementById("ketQua").innerHTML = "Vui lòng nhập số dương hợp lệ!";
+        } else {
+            let dienTich = (a * b) / 2;
+            document.getElementById("ketQua").innerHTML = "Diện tích tam giác vuông = " + dienTich;
+        }
+    }
+</script>
+</body>
+</html>
