@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Hiển thị các số nguyên tố đầu tiên</title>
+</head>
+<body>
+<h2>in ra số n đầu tiên</h2>
+<input type="number" id="soLuong">
+<button onclick="inSoNguyen()">in số nguyên</button>
+<br><br>
+<p id="ketQua"></p>
+<script>
+    function inSoNguyen() {
+        let number = parseInt(document.getElementById("soLuong").value);
+
+        if (isNaN(number) || number <= 0) {
+            document.getElementById("ketQua").innerHTMl= "vui lòng nhập số nguyên dương";
+        return;
+        }
+        let count = 0;
+        let N = 2;
+        let ketQua = "";
+
+        while (count < number) {
+            let laSoNguyenTo = true;
+
+            for (let i = 2; i <= Math.sqrt(N); i++) {
+                if (N % i === 0) {
+                    laSoNguyenTo = false;
+                    break;
+                }
+            }
+            if (laSoNguyenTo) {
+                ketQua += N + " ";
+                count++;
+            }
+            N++;
+        }
+        document.getElementById("ketQua").innerHTML= "các số nguyên tố" + ketQua;
+
+    }
+</script>
+</body>
+</html>
