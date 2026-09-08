@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>kiểm tra tuổi</title>
+</head>
+<body>
+<h3>Kiểm tra tuổi hợp lệ</h3>
+
+<label>Nhập số tuổi: </label>
+<input type="number" id="tuoi" placeholder="Nhập số">
+<br><br>
+
+<button onclick="kiemTraTuoi()">Kiểm tra</button>
+<br><br>
+
+<p id="ketQua"></p>
+
+<script>
+    function kiemTraTuoi() {
+        let tuoi = parseInt(document.getElementById("tuoi").value);
+
+        if (isNaN(tuoi)) {
+            document.getElementById("ketQua").innerHTML = "Vui lòng nhập số nguyên!";
+        } else if (tuoi > 0 && tuoi < 120) {
+            document.getElementById("ketQua").innerHTML = "Đây là tuổi hợp lệ của một người";
+        } else {
+            document.getElementById("ketQua").innerHTML = "Đây không phải là tuổi hợp lệ của một người";
+        }
+    }
+</script>
+</body>
+</html>
