@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 3: Hiển thị ra 20 số trong dãy fibonacci đầu tiên.</title>
+</head>
+<body>
+<h2>Hiển thị fibonacci 20 số</h2>
+<button onclick="hienThiFibonacci()">hiện fibonacci</button>
+<p id="ketQua"></p>
+
+<script>
+    function hienThiFibonacci() {
+        let f0 = 0;
+        let f1 = 1;
+        let ketQua = f0 + " " + f1 + " ";
+
+        for (let i = 2; i < 20; i++) {
+            let f2 = f0 + f1;
+            ketQua += f2 + " ";
+            f0 = f1;
+            f1 = f2;
+        }
+        document.getElementById("ketQua").innerHTML = "20 số fibonacci đầu tiên: " + ketQua;
+    }
+</script>
+</body>
+</html>
