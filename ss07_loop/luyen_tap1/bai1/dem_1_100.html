@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>đếm</title>
+</head>
+<body>
+<h2>đém từ 1 tới 100</h2>
+<button onclick="demSo()"> đếm số</button>
+
+<p id="ketQua"></p>
+
+<script>
+    function demSo() {
+
+        let ketQua = " ";
+        for (let i = 1; i <=100; i++) {
+            ketQua += i + " ";
+
+            if (i === 99) {
+                alert("đã hoàn thành");
+            }
+        }
+        document.getElementById("ketQua").innerHTML = ketQua;
+
+    }
+</script>
+</body>
+</html>
