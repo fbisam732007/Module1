@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Kiểm tra 3 số có phải là cạnh của tam giác</h3>
+
+<label>Nhập cạnh a: </label>
+<input type="number" id="canhA" step="any" placeholder="Nhập số">
+<br><br>
+
+<label>Nhập cạnh b: </label>
+<input type="number" id="canhB" step="any" placeholder="Nhập số">
+<br><br>
+
+<label>Nhập cạnh c: </label>
+<input type="number" id="canhC" step="any" placeholder="Nhập số">
+<br><br>
+
+<button onclick="kiemTraTamGiac()">Kiểm tra</button>
+<br><br>
+
+<p id="ketQua"></p>
+
+<script>
+    function kiemTraTamGiac() {
+        let a = parseFloat(document.getElementById("canhA").value);
+        let b = parseFloat(document.getElementById("canhB").value);
+        let c = parseFloat(document.getElementById("canhC").value);
+
+        if (isNaN(a) || isNaN(b) || isNaN(c)) {
+            document.getElementById("ketQua").innerHTML = "Vui lòng nhập số hợp lệ!";
+            return;
+        }
+
+        if (a > 0 && b > 0 && c > 0 && a + b > c && b + c > a && a + c > b) {
+            document.getElementById("ketQua").innerHTML = "Ba số " + a + ", " + b + ", " + c + " là cạnh của một tam giác";
+        } else {
+            document.getElementById("ketQua").innerHTML = "Ba số " + a + ", " + b + ", " + c + " không phải là cạnh của một tam giác";
+        }
+    }
+</script>
+</body>
+</html>
