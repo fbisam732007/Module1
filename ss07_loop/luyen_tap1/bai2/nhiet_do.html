@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 2: Sử dụng hàm prompt() để lấy thông tin nhiệt độ hiện tại được nhập bởi người truy cập.</title>
+</head>
+<body>
+<h3>Kiểm tra nhiệt độ</h3>
+<input type="number" id="chinhNhietDo">
+<button onclick="kiemTraNhietDo()">Kiểm tra nhiệt độ</button>
+<p id="ketQua"></p>
+<script>
+    function kiemTraNhietDo() {
+        let nhietDo = parseInt(document.getElementById("chinhNhietDo").value);
+
+        if (isNaN(nhietDo)) {
+            document.getElementById("ketQua").innerHTML = "hãy nhập số hợp lệ";
+            return;
+        }
+
+        if (nhietDo > 100) {
+            document.getElementById("ketQua").innerHTML = "nhiệt độ " + nhietDo + " hãy giảm nhiệt độ";
+
+        } else if (nhietDo < 20) {
+            document.getElementById("ketQua").innerHTML = "nhiệt độ " + nhietDo + " hãy tăng nhiệt độ";
+
+        } else {
+            document.getElementById("ketQua").innerHTML = "nhiệt độ " + nhietDo + " nhiệt độ ổn định";
+        }
+
+    }
+</script>
+
+</body>
+</html>
