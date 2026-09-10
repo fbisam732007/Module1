@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>in hình sao</title>
+</head>
+<body>
+<h2> in hình sao</h2>
+<button onclick="inTamGiac()">in tam giác</button>
+<pre id="ketQua"></pre>
+
+<script>
+    function inTamGiac() {
+        let ketQua = "";
+
+        for (let i = 1; i <= 5; i++) {
+            for (let j = 1; j <= i; j++) {
+                ketQua += "*";
+            }
+            ketQua += "\n";
+        }
+        ketQua += "\n";
+
+        for (let i = 5; i >= 1; i--) {
+            for (let j = 1; j <= i; j++) {
+                ketQua += "*";
+            }
+            ketQua += "\n";
+
+        }
+        ketQua += "\n";
+
+        for (let i = 1; i <= 5; i++) {
+            for (let j = 1; j <= i; j++) {
+                ketQua += "*";
+            }
+            ketQua += "\n";
+        }
+        ketQua += "\n";
+
+        for (let i = 5; i >= 1; i--) {
+            for (let j = 1; j <= i; j++) {
+                ketQua += "*";
+            }
+            ketQua += "\n";
+        }
+        document.getElementById("ketQua").innerHTML = ketQua;
+    }
+</script>
+</body>
+</html>
