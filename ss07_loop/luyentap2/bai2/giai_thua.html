@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính giai thừa</title>
+</head>
+<body>
+<input type="number" id="soN" placeholder="nhập số nguyên dương">
+<button onclick="tinhGiaiThua()">Tính giai thừa</button>
+<p id="ketQua"></p>
+<script>
+    function tinhGiaiThua() {
+        let n = parseInt(document.getElementById("soN").value);
+
+        if (isNaN(n) || n < 0) {
+            document.getElementById("ketQua").innerHTML = " vui lòng nhập số nguyên dương";
+        return;
+        }
+        let giaiThua = 1;
+
+        for (let i = 1; i <= n; i++) {
+            giaiThua *= i;
+        }
+        document.getElementById("ketQua").innerHTML = n + "! = " + giaiThua;
+    }
+</script>
+</body>
+</html>
