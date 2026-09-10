@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tổng 30 số chia hết cho 7</title>
+</head>
+<body>
+<h3>Tính tổng 30 số chia hết cho 7 đầu tiên</h3>
+<button onclick="tinhTong()">Tính tổng</button>
+<br><br>
+<p id="ketQua"></p>
+
+<script>
+    function tinhTong() {
+        let tong = 0;
+        let count = 0;
+        let n = 1;
+        let daySo = "";
+
+        while (count < 30) {
+            if (n % 7 === 0) {
+                tong += n;
+                daySo += n + " ";
+                count++;
+            }
+            n++;
+        }
+
+        document.getElementById("ketQua").innerHTML = "30 số chia hết cho 7 đầu tiên:<br>" + daySo + "<br><br>Tổng = " + tong;
+    }
+</script>
+</body>
+</html>
