@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>chia hết 3 và 5</title>
+</head>
+<body>
+<button onclick="fizzBuzz()">Tính toán</button>
+<br><br>
+<p id="ketQua"></p>
+
+<script>
+    function fizzBuzz() {
+        let ketQua = " ";
+
+        for (let i = 1; i <= 100; i++) {
+            if (i % 3 === 0 && i % 5 === 0) {
+                ketQua += "fizzBuzz<br>";
+            }else if (i % 3 === 0) {
+                ketQua += "fizz<br>";
+            }else if (i % 5 === 0) {
+                ketQua += "buzz<br>";
+            }else {
+                ketQua += i + " <br> ";
+            }
+        }
+        document.getElementById("ketQua").innerHTML = ketQua;
+    }
+</script>
+</body>
+</html>
