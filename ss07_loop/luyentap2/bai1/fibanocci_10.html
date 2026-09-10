@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>in 10 dãy số fibanocci</title>
+</head>
+<body>
+<button onclick="inFibonacci()">in 10 số fibonacci</button>
+<br><br>
+<p id="ketQua"></p>
+<script>
+    function inFibonacci() {
+        let f0 = 0;
+        let f1 = 1;
+        let ketQua = f0 + " " + f1 + " ";
+
+        for (let i = 2; i <= 10; i++) {
+            let f2 = f0 + f1;
+            ketQua += f2 + " ";
+            f0 = f1;
+            f1 = f2;
+        }
+    document.getElementById("ketQua").innerHTML = "10 số fibonacci đầu tiên" + ketQua;
+    }
+</script>
+
+</body>
+</html>
