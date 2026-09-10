@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>tổng 20 ố fibonacci </title>
+</head>
+<body>
+<h3>Tính tổng 20 số Fibonacci đầu tiên</h3>
+<button onclick="tinhTongFibonacci()">Tính tổng</button>
+<br><br>
+<p id="ketQua"></p>
+
+<script>
+    function tinhTongFibonacci() {
+        let f0 = 0;
+        let f1 = 1;
+        let tong = f0 + f1;
+        let daySo = f0 + " + " + f1;
+
+        for (let i = 2; i < 20; i++) {
+            let f2 = f0 + f1;
+            tong += f2;
+            daySo += " + " + f2;
+            f0 = f1;
+            f1 = f2;
+        }
+
+        document.getElementById("ketQua").innerHTML = "Dãy: " + daySo + "<br>Tổng = " + tong;
+    }
+</script>
+</body>
+</html>
