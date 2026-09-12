@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tìm max trong mảng</title>
+</head>
+<body>
+<h2>tìm phần từ lớn nhất </h2>
+<button onclick="timMax()">Tìm max</button>
+<br>
+<p id="ketQua"></p>
+<script>
+    function timMax(){
+        let mang = [4,  12, 7, 25, 3, 18, 9, 10, 15, 6];
+        let max = mang[0];
+        let viTriMax = 0;
+
+        for (let i = 1; i < mang.length; i++) {
+            if (mang[i] > max) {
+                max = mang[i];
+                viTriMax = i;
+            }
+        }
+
+        let ketQua = document.getElementById("ketQua");
+        ketQua.innerHTML =
+            "Mảng: [" + mang.join(", ") + "]<br>" +
+            "Giá trị lớn nhất: " + max + "<br>" +
+            "Vị trí: " + viTriMax;
+    }
+</script>
+</body>
+</html>
