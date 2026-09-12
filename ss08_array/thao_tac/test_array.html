@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h2>bài 1: Nối mảng chuỗi</h2>
+<button onclick="bai1()">Nối mảng</button>
+<p id="ketQua1"></p>
+
+<h2>bài 2: chèn dấu - giữa 2 số chẵn</h2>
+<input type="text" id="chuoiSo" placeholder="Nhập chuỗi số">
+<button onclick="bai2()">chèn dấu -</button>
+<p id="ketQua2"></p>
+
+<h3>bài 3: đổi chữ thường thành chữ hoa</h3>
+<input type="text" id="chuoiKyTu" placeholder="Nhập chuỗi ký tự">
+<button onclick="bai3()">đổi chữ</button>
+<p id="ketQua3"></p>
+
+
+<script>
+    function bai1() {
+        let myColour = ["Red", "Green", "White", "Black"];
+        let ketQua = myColour.join(",");
+        document.getElementById("ketQua1").innerHTML = ketQua;
+    }
+
+    function bai2() {
+        let chuoi = document.getElementById("chuoiSo").value;
+        let arr = chuoi.split("");
+        let ketQua = [];
+
+        for (let i = 0; i < arr.length; i++) {
+            ketQua.push(arr[i]);
+            if (arr[i] % 2  === 0 && arr[i + 1] % 2 === 0) {
+                ketQua.push("-");
+            }
+        }
+        document.getElementById("ketQua2").innerHTML = ketQua.join("");
+    }
+
+    function bai3() {
+        let chuoi = document.getElementById("chuoiKyTu").value;
+        let arr = chuoi.split("");
+        let ketQua = arr.map(function(kyTu) {
+            if (kyTu === kyTu.toLowerCase()) {
+                return kyTu.toUpperCase();
+            }else {
+                return kyTu.toLowerCase();
+            }
+        });
+        document.getElementById("ketQua3").innerHTML = ketQua.join("");
+    }
+</script>
+</body>
+</html>
