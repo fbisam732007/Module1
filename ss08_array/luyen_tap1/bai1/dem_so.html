@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>đếm ố</title>
+</head>
+<body>
+<h2>đếm số </h2>
+<button onclick="demSo()">đếm số</button>
+<p id="ketQua"></p>
+
+<script>
+    function demSo() {
+        let mang = [4, 12, 7, 25, 3, 18, 9, 10, 15, 6];
+        let count = 0;
+        let danhSach = "";
+
+        for (let i = 0; i < mang.length; i++) {
+            if (mang[i].length>= 10) {
+                count++;
+                danhSach += mang[i] + " ";
+            }
+        }
+        document.getElementById("ketQua").innerHTML =
+        "Mảng: [" + mang.join(", ") + "] <br>" +
+        "Các số >= 10: " + danhSach + "<br>" +
+        "Số lượng: " + count;
+    }
+</script>
+</body>
+</html>
+gi
