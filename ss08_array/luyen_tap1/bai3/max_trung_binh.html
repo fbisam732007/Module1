@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>max và trung bình mảng</title>
+</head>
+<body>
+<h2>Tìm max và giá trị trung bình</h2>
+<button onclick="tinhToan()">Tính toán</button>
+<br><br>
+<p id="ketQua"></p>
+
+<script>
+    function tinhToan() {
+        let mang = [4, 12, 7, 25, 3, 18, 9, 10, 15, 6];
+
+        let max = mang[0];
+        let tong = 0;
+
+        for (let i = 0; i < mang.length; i++) {
+            if (mang[i] > max) {
+                max = mang[i];
+            }
+            tong += mang[i];
+        }
+
+        let trungBinh = tong / mang.length;
+
+        let ketQua = document.getElementById("ketQua");
+        ketQua.innerHTML =
+            "Mảng: [" + mang.join(", ") + "]<br>" +
+            "Giá trị lớn nhất: " + max + "<br>" +
+            "Giá trị trung bình: " + trungBinh;
+    }
+</script>
+</body>
+</html>
