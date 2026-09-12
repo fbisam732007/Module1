@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>từ điển</title>
+</head>
+<body>
+<h2>Từ điển Anh - Việt</h2>
+<input type="text" id="tuCanTra" placeholder="Nhập từ tiếng Anh">
+<button onclick="traTu()">Tra từ</button>
+<br><br>
+<p id="ketQua"></p>
+
+<script>
+    function traTu() {
+        let mangAnh = ["hello", "cat", "dog", "book", "house", "car", "water", "tree"];
+        let mangViet = ["xin chào", "con mèo", "con chó", "quyển sách", "ngôi nhà", "xe hơi", "nước", "cái cây"];
+
+        let tuCanTra = document.getElementById("tuCanTra").value.toLowerCase().trim();
+        let viTri = -1;
+
+        for (let i = 0; i < mangAnh.length; i++) {
+            if (mangAnh[i] === tuCanTra) {
+                viTri = i;
+                break;
+            }
+        }
+
+        if (viTri !== -1) {
+            document.getElementById("ketQua").innerHTML = tuCanTra + " → " + mangViet[viTri];
+        } else {
+            document.getElementById("ketQua").innerHTML = "Không tìm thấy từ này!";
+        }
+    }
+</script>
+</body>
+</html>
