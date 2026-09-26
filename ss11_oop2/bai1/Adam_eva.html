@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập Adam và Eva</title>
+</head>
+<body>
+
+<h1>Bài tập: Adam và Eva</h1>
+
+<p>
+    <label>Tên người 1: <input type="text" id="name1" value="Adam"></label>
+    <label>Cân nặng: <input type="number" id="weight1" value="60"></label>
+</p>
+<p>
+    <label>Tên người 2: <input type="text" id="name2" value="Eva"></label>
+    <label>Cân nặng: <input type="number" id="weight2" value="50"></label>
+</p>
+
+<button onclick="run()">Bắt đầu</button>
+
+<div id="output"></div>
+
+<script>
+    class Apple {
+        constructor() {
+            this.weight = 10;
+        }
+
+        decrease() {
+            if (this.weight > 0) {
+                this.weight--;
+            }
+        }
+
+        isEmpty() {
+            return this.weight <= 0;
+        }
+
+        getWeight() {
+            return this.weight;
+        }
+    }
+
+    class Human {
+        constructor(name, gender, weight) {
+            this.name = name;
+            this.gender = gender;
+            this.weight = weight;
+        }
+
+        isMale() {
+            return this.gender;
+        }
+
+        setGender(gender) {
+            this.gender = gender;
+        }
+
+        checkApple(apple) {
+            return !apple.isEmpty();
+        }
+
+        eat(apple) {
+            if (this.checkApple(apple)) {
+                apple.decrease();
+                this.weight++;
+            }
+        }
+
+        say(text) {
+            document.getElementById("output").innerHTML +=
+                "<p>" + this.name + ": " + text + "</p>";
+        }
+
+        getName() {
+            return this.name;
+        }
+
+        setName(name) {
+            this.name = name;
+        }
+
+        getWeight() {
+            return this.weight;
+        }
+
+        setWeight(weight) {
+            this.weight = weight;
+        }
+    }
+
+    function run() {
+        var output = document.getElementById("output");
+        output.innerHTML = "";
+
+        var name1 = document.getElementById("name1").value.trim() || "Adam";
+        var name2 = document.getElementById("name2").value.trim() || "Eva";
+
+        var w1 = parseInt(document.getElementById("weight1").value);
+        var w2 = parseInt(document.getElementById("weight2").value);
+
+        if (isNaN(w1) || w1 <= 0) w1 = 60;
+        if (isNaN(w2) || w2 <= 0) w2 = 50;
+
+        var apple = new Apple();
+
+        var adam = new Human(name1, true, 0);
+        var eva  = new Human(name2, false, 0);
+
+        adam.setWeight(w1);
+        eva.setWeight(w2);
+        output.innerHTML += "<p>Khối lượng táo mặc định: " + apple.getWeight() + "</p>";
+
+        adam.say("Xin chào " + eva.getName() + ", mình là " + adam.getName() + ".");
+        eva.say("Chào " + adam.getName() + "!");
+
+        var turn = 0;
+        while (!apple.isEmpty()) {
+            if (turn % 2 === 0) {
+                adam.eat(apple);
+            } else {
+                eva.eat(apple);
+            }
+            turn++;
+        }
+
+        adam.say("Cùng ăn táo nhé ");
+        eva.say("Ừ, ok");
+        adam.say("Táo ngon k");
+        eva.say("ngon nha");
+
+        output.innerHTML +=
+            "<p>Khối lượng " + adam.getName() + ": " + adam.getWeight() + "</p>" +
+            "<p>Khối lượng " + eva.getName() + ": " + eva.getWeight() + "</p>" +
+            "<p>Khối lượng táo còn lại: " + apple.getWeight() + "</p>";
+    }
+</script>
+</body>
+</html>
