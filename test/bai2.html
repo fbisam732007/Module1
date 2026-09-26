@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 2</title>
+</head>
+<body>
+
+<h1>Bài 2</h1>
+
+<input type="text" id="daySo" value="1,2,3,1,4,9" size="40">
+<button onclick="kiemTra()">Kiểm tra</button>
+
+<div id="ketQua"></div>
+
+<script>
+    function checkArray(mang) {
+        if (mang.length % 2 !== 0) return false;
+
+        var nua = mang.length / 2;
+        var dau = mang.slice(0, nua);
+        var sau = mang.slice(nua);
+
+        for (var i = 0; i < nua; i++) {
+            if (dau[i] * dau[i] !== sau[i]) return false;
+        }
+        return true;
+    }
+
+    function kiemTra() {
+        var mang = document.getElementById("daySo").value.split(",");
+        for (var i = 0; i < mang.length; i++) mang[i] = Number(mang[i]);
+
+        document.getElementById("ketQua").innerHTML =
+            "Kết quả: <b>" + (checkArray(mang) ? "TRUE" : "FALSE") + "</b>";
+    }
+</script>
+
+</body>
+</html>

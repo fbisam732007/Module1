@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 1</title>
+</head>
+<body>
+
+<p>
+    <label>Nhập độ dài mảng n:
+        <input type="number" id="ketQuaN" min="1">
+    </label>
+    <button onclick="createInputs()">Tạo ô nhập</button>
+</p>
+
+<div id="input"></div>
+<button onclick="run()" id="runN" style="display:none;">Kiểm tra mảng</button>
+<div id="output"></div>
+
+<script>
+    function createInputs() {
+        let n = parseInt(document.getElementById("ketQuaN").value);
+
+        let inputArea = document.getElementById("input");
+        let runN = document.getElementById("runN");
+        let output = document.getElementById("output");
+
+        inputArea.innerHTML = "";
+        output.innerHTML = "";
+
+        if (isNaN(n) || n <= 0) {
+            output.innerHTML = "<p>Vui lòng nhập n là số nguyên dương.</p>";
+            runN.style.display = "none";
+            return;
+        }
+
+        for (let i = 0; i < n; i++) {
+            inputArea.innerHTML +=
+                'Phần tử ' + (i + 1) + ': ' +
+                '<input type="number" id="item' + i + '" value="0"><br>';
+        }
+
+        runN.style.display = "inline-block";
+    }
+
+    function run() {
+        let n = parseInt(document.getElementById("ketQuaN").value);
+        let output = document.getElementById("output");
+        let arr = [];
+
+        for (let i = 0; i < n; i++) {
+            let val = parseFloat(document.getElementById("item" + i).value);
+            arr.push(isNaN(val) ? 0 : val);
+        }
+
+        output.innerHTML = "<p><b>Mảng vừa nhập:</b> [" + arr.join(", ") + "]</p>";
+
+        let countEven = 0;
+        let countOdd = 0;
+
+        for (let j = 0; j < arr.length; j++) {
+            if (arr[j] % 2 === 0) {
+                countEven++;
+            } else {
+                countOdd++;
+            }
+        }
+
+        output.innerHTML += "<p>Phần tử chẵn: " + countEven + "</p>";
+        output.innerHTML += "<p>Phần tử lẻ: " + countOdd + "</p>";
+
+        if (countEven === countOdd) {
+            output.innerHTML += "<p><b>Kết quả: OK</b></p>";
+        } else {
+            output.innerHTML += "<p><b>Kết quả: NO</b></p>";
+        }
+    }
+</script>
+
+</body>
+</html>
