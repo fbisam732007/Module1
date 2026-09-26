@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập Temperature</title>
+</head>
+<body>
+
+<h1>Bài tập: Lớp Temperature</h1>
+
+<label>Nhập nhiệt độ (°C): <input type="number" id="celsiusInput"></label>
+<button onclick="run()">Chuyển đổi</button>
+
+<div id="output"></div>
+
+<script>
+    class Temperature {
+        constructor(celsius) {
+            this.celsius = celsius;
+        }
+
+        get celsius() {
+            return this._celsius;
+        }
+
+        set celsius(value) {
+            if (value < -273) {
+                throw new Error("Nhiệt độ không được nhỏ hơn -273 độ C.");
+            }
+            this._celsius = value;
+        }
+
+        toFahrenheit() {
+            return this._celsius * 9 / 5 + 32;
+        }
+
+        toKelvin() {
+            return this._celsius + 273.15;
+        }
+    }
+
+    var output = document.getElementById("output");
+
+    function run() {
+        var value = parseFloat(document.getElementById("celsiusInput").value);
+
+        if (isNaN(value)) {
+            output.innerHTML = "<p>Vui lòng nhập một số hợp lệ.</p>";
+            return;
+        }
+
+        try {
+            var t = new Temperature(value);
+
+            output.innerHTML  = "<p>Nhiệt độ: " + t.celsius + " °C</p>";
+            output.innerHTML += "<p>Độ F: " + t.toFahrenheit() + " °F</p>";
+            output.innerHTML += "<p>Độ Kelvin: " + t.toKelvin() + " K</p>";
+        } catch (e) {
+            output.innerHTML = "<p>Lỗi: " + e.message + "</p>";
+        }
+    }
+</script>
+</body>
+</html>

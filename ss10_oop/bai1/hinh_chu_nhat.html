@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập Rectangle</title>
+</head>
+<body>
+
+<h1>Bài tập: Xây dựng lớp Rectangle</h1>
+
+<label>Chiều dài: <input type="number" id="lengthInput"></label>
+<label>Chiều rộng: <input type="number" id="widthInput"></label>
+<button onclick="run()">Vẽ & Tính</button>
+
+<br><br>
+
+<canvas id="myCanvas" width="600" height="400" style="border:1px solid black;"></canvas>
+
+<div id="output"></div>
+
+<script>
+    class Rectangle {
+        constructor(length, width) {
+            this.length = length;
+            this.width  = width;
+        }
+
+        getArea() {
+            return this.length * this.width;
+        }
+
+        getPerimeter() {
+            return (this.length + this.width) * 2;
+        }
+
+        draw(ctx, x, y) {
+            x = x || 50;
+            y = y || 50;
+
+            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+            ctx.fillStyle = "#614caf";
+            ctx.fillRect(x, y, this.width, this.length);
+
+            ctx.strokeStyle = "#1b325e";
+            ctx.lineWidth = 2;
+            ctx.strokeRect(x, y, this.width, this.length);
+        }
+    }
+
+    var canvas = document.getElementById("myCanvas");
+    var ctx    = canvas.getContext("2d");
+    var output = document.getElementById("output");
+
+    function run() {
+        var length = parseInt(document.getElementById("lengthInput").value);
+        var width  = parseInt(document.getElementById("widthInput").value);
+
+        if (isNaN(length) || isNaN(width) || length <= 0 || width <= 0) {
+            output.innerHTML = "<p>Vui lòng nhập chiều dài và chiều rộng là số nguyên dương.</p>";
+            return;
+        }
+
+        var rect = new Rectangle(length, width);
+
+        rect.draw(ctx);
+
+        output.innerHTML  = "<p>Chiều dài = " + rect.length + "</p>";
+        output.innerHTML += "<p>Chiều rộng = " + rect.width + "</p>";
+        output.innerHTML += "<p>Diện tích = " + rect.getArea() + "</p>";
+        output.innerHTML += "<p>Chu vi = " + rect.getPerimeter() + "</p>";
+    }
+</script>
+</body>
+</html>
