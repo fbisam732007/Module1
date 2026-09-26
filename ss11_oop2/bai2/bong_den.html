@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập Công tắc và Bóng đèn</title>
+</head>
+<body>
+
+<h1>Bài tập: Công tắc và Bóng đèn</h1>
+
+<button onclick="run()">Chạy kịch bản (bật/tắt 10 lần)</button>
+
+<div id="output"></div>
+
+<script>
+
+    class ElectricLamp {
+        constructor() {
+            this.status = false;
+        }
+
+        turnOn() {
+            this.status = true;
+        }
+
+        turnOff() {
+            this.status = false;
+        }
+    }
+
+
+    class SwitchButton {
+        constructor() {
+            this.status = false;
+            this.lamp = null;
+        }
+
+        connectToLamp(lamp) {
+            this.lamp = lamp;
+        }
+
+        switchOn() {
+            this.status = true;
+            if (this.lamp !== null) {
+                this.lamp.turnOn();
+            }
+        }
+
+        switchOff() {
+            this.status = false;
+            if (this.lamp !== null) {
+                this.lamp.turnOff();
+            }
+        }
+    }
+
+    function run() {
+        var output = document.getElementById("output");
+        output.innerHTML = "";
+
+        var lamp = new ElectricLamp();
+        var button = new SwitchButton();
+
+        button.connectToLamp(lamp);
+
+        for (var i = 1; i <= 10; i++) {
+            if (i % 2 !== 0) {
+                button.switchOn();
+            } else {
+                button.switchOff();
+            }
+
+            var state = lamp.status ? "BẬT" : "TẮT";
+            output.innerHTML += "<p>Lần " + i + ": Bóng đèn " + state + "</p>";
+        }
+    }
+</script>
+
+</body>
+</html>
